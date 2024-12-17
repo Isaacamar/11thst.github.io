@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+    <title>Contact - 11th St. Sounds</title>
+    <link rel="stylesheet" href="styles.css"/>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="images/11thstLOGO.jpeg" alt="11th St Logo" class="logo-image">
+                <span class="logo-text">St.</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="mixes.html">Mixes</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="container no-hero-section">
+            <h2>Get in Touch</h2>
+            <p>Want to book us for an event, collaborate on a project, or just say hi? Drop us a line!</p>
+            
+            <form action="#" method="POST">
+                <div>
+                    <label for="name">For inquiries send a message to sublimelab:</label><br>
+                    <input type="text" id="name" name="name" required/>
+                </div>
+                <br>
+                <div>
+                    <label for="email">sublime@sublimelab.com:</label><br>
+                    <input type="email" id="email" name="email" required/>
+                </div>
+                <br>
+                <div>
+                    <label for="message">Message:</label><br>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <br>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 11th St. Sounds, NYC. All rights reserved.</p>
+            <p>Follow us underground:</p>
+            <div class="social-links">
+                <a href="#"><img src="images/11thstLOGO.jpeg" alt="Social Icon"></a>
+                <a href="#"><img src="images/11thstLOGO.jpeg" alt="Social Icon"></a>
+                <a href="#"><img src="images/11thstLOGO.jpeg" alt="Social Icon"></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
