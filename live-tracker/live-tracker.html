@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L Train Party Tracker</title>
+    <link rel="stylesheet" href="live-tracker.css">
+</head>
+<body>
+    <div class="container">
+        <div class="title">L Train Party Tracker</div>
+        
+        <div class="party-info" id="partyInfo">
+            🎉 Party Train Currently At: <span id="currentStation">Connecting to train...</span>
+        </div>
+
+        <div class="subway-line">
+            <div class="line"></div>
+            <div class="stations" id="stationList">
+                <!-- Stations will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <div class="controls">
+            <select id="userStation">
+                <option value="">Select your station...</option>
+                <!-- Stations will be populated by JavaScript -->
+            </select>
+            <div class="status" id="status">
+                Select your station to see how far you are from the party train.
+            </div>
+        </div>
+    </div>
+
+    <script src="live-tracker.js"></script>
+</body>
+</html>
