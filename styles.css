@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Playfair+Display:wght@300;400;600&display=swap');
 
 :root {
     --green-main: #193314; 
@@ -16,8 +15,8 @@
 }
 
 body {
-    font-family: 'Cormorant Garamond', 'Playfair Display', serif;
-    font-weight: 300;
+    font-family: 'Courier New', monospace;
+    font-weight: 400;
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
@@ -149,13 +148,14 @@ nav {
 }
 
 .cta-button {
+    font-family: 'Courier New', monospace;
     padding: 0.8rem 1.5rem;
     background-color: var(--green-accent);
     border: none;
     color: #fff;
     cursor: pointer;
-    border-radius: 5px;
-    font-size: 1rem;
+    border-radius: 8px;
+    font-size: 2rem;
     transition: background-color var(--transition-speed) ease;
 }
 
