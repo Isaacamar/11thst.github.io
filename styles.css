@@ -108,7 +108,7 @@ nav {
     position: relative;
     width: 100vw;
     height: 100vh;
-    background-image: url('images/subwaymap.jpg'); 
+    background-image: url('public/images/subwaymap.jpg'); 
     background-size: cover;
     background-position: center;
     filter: invert(90%) brightness(70%) contrast(90%);
