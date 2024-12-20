@@ -25,6 +25,8 @@ const stations = [
     'Canarsie-Rockaway'
 ];
 
+const L_TRAIN_ENDPOINT = "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/nyct%2Fgtfs-l";
+
 let currentTrainPosition = 5; // Temporary: Starting at Bedford Av
 
 function createStations() {
