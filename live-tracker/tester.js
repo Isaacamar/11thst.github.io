@@ -1,5 +1,3 @@
-
-const AdmZip = require('adm-zip');
 const protobuf = require('protobufjs');
 
 /**
@@ -16,7 +14,7 @@ async function fetchAndParseGTFSData(apiUrl) {
 
         // Read the response as a buffer
         const buffer = await response.arrayBuffer();
-		console.log("The buffer is " + buffer);
+		console.log("The buffer is " + buffer.byteLength + " bytes long.");
 
 
         // Load the Protobuf schema
@@ -27,6 +25,13 @@ async function fetchAndParseGTFSData(apiUrl) {
 
         // Decode the Protobuf data
         const decodedData = FeedMessage.decode(new Uint8Array(buffer));
+		jsonData = decodedData.toJSON();
+		console.log(jsonData["entity"][0]);
+		console.log("\n\n\n");
+		console.log(decodedData.toJSON());
+		// for (var key in decodedData) {
+		// 	console.log(decodedData[key]);
+		// }
 
         // Convert Protobuf message to a plain object
         const plainObject = FeedMessage.toObject(decodedData, {
@@ -46,5 +51,5 @@ async function fetchAndParseGTFSData(apiUrl) {
 const API_URL = 'https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/nyct%2Fgtfs-l';
 
 fetchAndParseGTFSData(API_URL)
-    .then(data => console.log('Parsed GTFS Data:', data))
+    .then(data => console.log('Parsed GTFS Data:'))
     .catch(error => console.error('Error:', error));
