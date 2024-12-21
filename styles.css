@@ -57,23 +57,44 @@ nav {
     color: #fff; 
 }
 
+/* Navigation Container */
 .nav-links {
-    display: flex;
-    list-style: none;
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    background-color: var(--green-main); /* Background for the dropdown menu */
+    position: absolute;
+    top: 66px; /* Align just below the header */
+    right: 0; /* Align to the right side of the screen */
+    width: 200px; /* Set width of dropdown menu */
+    text-align: right;
+    padding: 1rem;
+    z-index: 1000; /* Ensure it stays above other elements */
+    transition: transform var(--transition-speed) ease, opacity var(--transition-speed) ease;
+    opacity: 0;
+    transform: translateY(-20px); /* Slide up effect when hidden */
 }
 
+/* Show nav when active */
+.nav-links.nav-active {
+    display: flex; /* Enable display when active */
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Reset position */
+}
+
+/* Navigation Links */
 .nav-links li {
-    margin-left: 2rem;
+    margin: 1rem 0; /* Add spacing between items */
 }
 
 .nav-links a {
     text-decoration: none;
-    color: #fff;
+    color: #fff; /* White color for links */
     font-weight: 400;
     position: relative;
     transition: color var(--transition-speed) ease;
 }
 
+/* Underline Effect */
 .nav-links a::before {
     content: "";
     position: absolute;
@@ -85,13 +106,16 @@ nav {
     transition: width var(--transition-speed) ease;
 }
 
-.nav-links a:hover::before, .nav-links a.active::before {
-    width: 100%;
+.nav-links a:hover::before,
+.nav-links a.active::before {
+    width: 100%; /* Expand underline on hover or active state */
 }
 
+/* Burger Menu Icon */
 .burger {
-    display: none;
+    display: block; /* Ensure it’s visible on mobile */
     cursor: pointer;
+    z-index: 1100; /* Keep it above other elements */
 }
 
 .burger div {
@@ -101,6 +125,45 @@ nav {
     margin: 5px;
     transition: all var(--transition-speed) ease;
 }
+
+/* Burger Animation (when toggled) */
+.burger.toggle div:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger.toggle div:nth-child(2) {
+    opacity: 0; /* Hide middle bar */
+}
+
+.burger.toggle div:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hidden by default for mobile */
+        flex-direction: column;
+        background-color: var(--green-main);
+        position: absolute;
+        top: 66px;
+        right: 0;
+        width: 200px;
+        text-align: right;
+        padding: 1rem;
+        z-index: 1000; /* Ensure it stays above other elements */
+        transition: transform var(--transition-speed) ease, opacity var(--transition-speed) ease;
+        opacity: 0;
+        transform: translateY(-20px); /* Slide up effect when hidden */
+    }
+
+    .nav-links.nav-active {
+        display: flex;
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 /* Hero Section */
 #hero {
