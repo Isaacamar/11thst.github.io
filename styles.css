@@ -38,6 +38,7 @@ nav {
     align-items: center;
 }
 
+/* Logo Styles */
 .logo {
     display: flex;
     align-items: center;
@@ -54,16 +55,67 @@ nav {
 .logo-text {
     font-size: 1.2rem;
     font-weight: 400;
-    color: #fff; 
+    color: #fff;
 }
 
-/* Modified Navigation Styles */
+/* Navigation Links */
 .nav-links {
-    display: none; /* Hidden by default */
+    display: flex;
+    align-items: center;
+    list-style: none;
 }
 
-/* Full screen mobile menu */
+.nav-links li {
+    margin: 0 1.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 400;
+    position: relative;
+    transition: color var(--transition-speed) ease;
+}
+
+/* Underline effect for nav links */
+.nav-links a::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #fff;
+    transition: width var(--transition-speed) ease;
+}
+
+.nav-links a:hover::before,
+.nav-links a.active::before {
+    width: 100%;
+}
+
+/* Burger Menu */
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px;
+    transition: all var(--transition-speed) ease;
+}
+
+/* Mobile Navigation */
 @media (max-width: 768px) {
+    .burger {
+        display: block;
+        position: relative;
+        z-index: 999;
+    }
+
     .nav-links {
         position: fixed;
         top: 0;
@@ -99,11 +151,12 @@ nav {
         transform: translateY(0);
     }
 
-    /* Stagger the animation of menu items */
+    /* Stagger animation for menu items */
     .nav-links li:nth-child(1) { transition-delay: 0.2s; }
     .nav-links li:nth-child(2) { transition-delay: 0.3s; }
     .nav-links li:nth-child(3) { transition-delay: 0.4s; }
     .nav-links li:nth-child(4) { transition-delay: 0.5s; }
+    .nav-links li:nth-child(5) { transition-delay: 0.6s; }
 
     .nav-links a {
         font-size: 1.5rem;
@@ -112,13 +165,6 @@ nav {
         display: block;
     }
 
-    /* Keep burger menu above the overlay */
-    .burger {
-        position: relative;
-        z-index: 999;
-    }
-
-    /* Modified burger animation */
     .burger.toggle div:nth-child(1) {
         transform: rotate(45deg) translate(5px, 5px);
         background-color: #fff;
@@ -200,7 +246,7 @@ nav {
     width: 90%;
     margin: 4rem auto;
     text-align: center;
-    padding-top: 80px; /* ensure content doesn't hide behind fixed header */
+    padding-top: 80px;
 }
 
 .container h2 {
@@ -265,40 +311,20 @@ footer {
     border-radius: 50%;
 }
 
-/* Parallax Section (if needed) */
+/* Parallax Section */
 .parallax-section {
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
 }
 
-/* No hero sections on some pages */
+/* No hero sections */
 .no-hero-section {
-    padding-top: 120px; /* extra space for pages without hero */
+    padding-top: 120px;
 }
 
-/* Responsive */
+/* Additional Mobile Responsive Styles */
 @media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        background-color: var(--green-main);
-        position: absolute;
-        top: 66px;
-        right: 0;
-        width: 200px;
-        text-align: right;
-        padding: 1rem;
-    }
-
-    .nav-links li {
-        margin: 1rem 0;
-    }
-
-    .burger {
-        display: block;
-    }
-
     .mix-card, .team-member {
         flex: 1 1 100%;
     }
