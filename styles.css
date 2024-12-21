@@ -57,113 +57,82 @@ nav {
     color: #fff; 
 }
 
-/* Navigation Container */
+/* Modified Navigation Styles */
 .nav-links {
     display: none; /* Hidden by default */
-    flex-direction: column;
-    background-color: var(--green-main); /* Background for the dropdown menu */
-    position: absolute;
-    top: 66px; /* Align just below the header */
-    right: 0; /* Align to the right side of the screen */
-    width: 200px; /* Set width of dropdown menu */
-    text-align: right;
-    padding: 1rem;
-    z-index: 1000; /* Ensure it stays above other elements */
-    transition: transform var(--transition-speed) ease, opacity var(--transition-speed) ease;
-    opacity: 0;
-    transform: translateY(-20px); /* Slide up effect when hidden */
 }
 
-/* Show nav when active */
-.nav-links.nav-active {
-    display: flex; /* Enable display when active */
-    opacity: 1; /* Fully visible */
-    transform: translateY(0); /* Reset position */
-}
-
-/* Navigation Links */
-.nav-links li {
-    margin: 1rem 0; /* Add spacing between items */
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #fff; /* White color for links */
-    font-weight: 400;
-    position: relative;
-    transition: color var(--transition-speed) ease;
-}
-
-/* Underline Effect */
-.nav-links a::before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: #fff;
-    transition: width var(--transition-speed) ease;
-}
-
-.nav-links a:hover::before,
-.nav-links a.active::before {
-    width: 100%; /* Expand underline on hover or active state */
-}
-
-/* Burger Menu Icon */
-.burger {
-    display: block; /* Ensure it’s visible on mobile */
-    cursor: pointer;
-    z-index: 1100; /* Keep it above other elements */
-}
-
-.burger div {
-    width: 25px;
-    height: 3px;
-    background-color: #fff;
-    margin: 5px;
-    transition: all var(--transition-speed) ease;
-}
-
-/* Burger Animation (when toggled) */
-.burger.toggle div:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-
-.burger.toggle div:nth-child(2) {
-    opacity: 0; /* Hide middle bar */
-}
-
-.burger.toggle div:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-}
-
-/* Responsive Design */
+/* Full screen mobile menu */
 @media (max-width: 768px) {
     .nav-links {
-        display: none; /* Hidden by default for mobile */
-        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
         background-color: var(--green-main);
-        position: absolute;
-        top: 66px;
-        right: 0;
-        width: 200px;
-        text-align: right;
-        padding: 1rem;
-        z-index: 1000; /* Ensure it stays above other elements */
-        transition: transform var(--transition-speed) ease, opacity var(--transition-speed) ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 998;
         opacity: 0;
-        transform: translateY(-20px); /* Slide up effect when hidden */
+        pointer-events: none;
+        transition: opacity var(--transition-speed) ease;
     }
 
     .nav-links.nav-active {
+        opacity: 1;
+        pointer-events: all;
         display: flex;
+    }
+
+    .nav-links li {
+        margin: 2rem 0;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .nav-links.nav-active li {
         opacity: 1;
         transform: translateY(0);
     }
-}
 
+    /* Stagger the animation of menu items */
+    .nav-links li:nth-child(1) { transition-delay: 0.2s; }
+    .nav-links li:nth-child(2) { transition-delay: 0.3s; }
+    .nav-links li:nth-child(3) { transition-delay: 0.4s; }
+    .nav-links li:nth-child(4) { transition-delay: 0.5s; }
+
+    .nav-links a {
+        font-size: 1.5rem;
+        text-align: center;
+        width: 100%;
+        display: block;
+    }
+
+    /* Keep burger menu above the overlay */
+    .burger {
+        position: relative;
+        z-index: 999;
+    }
+
+    /* Modified burger animation */
+    .burger.toggle div:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+        background-color: #fff;
+    }
+
+    .burger.toggle div:nth-child(2) {
+        opacity: 0;
+    }
+
+    .burger.toggle div:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+        background-color: #fff;
+    }
+}
 
 /* Hero Section */
 #hero {
