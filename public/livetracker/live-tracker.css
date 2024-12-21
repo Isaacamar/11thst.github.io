@@ -1,0 +1,190 @@
+/* GLOBAL STYLES */
+body {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    font-family: 'Courier New', monospace;
+    /* Remove any margins, rely on flex to center horizontally. */
+    margin: 0; 
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* so it's not vertically centered */
+  }
+  
+  .container {
+    background-color: #2a2a2a;
+    border: 8px solid #3a3a3a;
+    border-radius: 15px;
+    padding: 20px; 
+    width: 100%;
+    max-width: 900px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    /* Added top margin for spacing from the top of the page */
+    margin-top: 40px; /* Adjust this value to change spacing */
+  }
+  
+  /* TITLE */
+  .title {
+    text-align: center;
+    font-size: 24px;
+    /* Replace margin-bottom with padding. 
+       We'll let .title have extra bottom padding to create space below it. */
+    padding-bottom: 10px; 
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(255,215,0,0.5);
+  }
+  
+  /* DIRECTION INFO */
+  .direction-info {
+    text-align: center;
+    font-size: 16px;
+    /* Space below this element */
+    padding-bottom: 5px;
+  }
+  
+  /* PARTY INFO */
+  .party-info {
+    text-align: center;
+    /* Space below this (previously margin-bottom) */
+    padding-bottom: 10px;
+    padding: 10px; /* Keep inside padding for the grey box */
+    background-color: #333;
+    border-radius: 4px;
+    border: 2px solid #ffd700;
+  }
+  
+  /* SUBWAY-LINE WRAPPER */
+  .subway-line {
+    /* Instead of margin: 0 auto 30px, we’ll push space down via padding-bottom */
+    padding: 10px 0 50px 0; 
+    position: relative;
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    /* We'll keep min-height: 0 so no forced vertical space. */
+    min-height: 0;
+  }
+  
+  /* HIDE THE GREY LINE */
+  .line {
+    display: none;
+    /* You had padding-bottom: 15px here; we’ll leave it alone or remove it. */
+    padding-bottom: 0; 
+  }
+  
+  /* STATIONS CONTAINER */
+  .stations {
+    display: inline-flex;
+    align-items: center;
+    max-width: none;
+    z-index: 2;
+    /* no margin—just rely on the parent's padding or your own internal station spacing */
+    padding: 0; 
+  }
+  
+  /* INDIVIDUAL STATION */
+  .station {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    /* Replace margin: 0 8px with horizontal padding */
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  
+  /* THE MARKER (the dot) */
+  .station-marker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* margin-top: 10px replaced with padding-top if you want space above the dot */
+    padding-top: 10px;
+  }
+  
+  /* LIGHT (dot) */
+  .light {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ff3333; /* default red for "not covered" */
+    box-shadow: 0 0 5px rgba(255,51,51,0.3);
+    transition: all 0.3s ease;
+  }
+  
+  /* Light for stations behind or current station */
+  .light.passed {
+    background-color: #33ff33;
+    box-shadow: 0 0 10px rgba(51,255,51,0.5);
+  }
+  
+  /* CURRENT station gets a "pulse" */
+  .light.current {
+    animation: pulse 1s infinite alternate;
+    background-color: #00ffcc;
+    box-shadow: 0 0 10px rgba(0,255,204,0.7);
+  }
+  
+  @keyframes pulse {
+    0%   { transform: scale(1); }
+    100% { transform: scale(1.5); }
+  }
+  
+  /* STATION NAME */
+  .station-name {
+    font-size: 14px;
+    transform: rotate(-30deg); 
+    transform-origin: bottom right;
+    text-align: right;
+    width: 80px;
+    /* No margin bottom; if you need extra space below, use padding-bottom. */
+    padding-bottom: 0;
+  }
+  
+  /* CONTROLS AREA */
+  .controls {
+    /* Instead of margin-top, we'll give it padding-top. 
+       That ensures there's space above the container. */
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    background-color: #333;
+    border-radius: 8px;
+  }
+  
+  /* STATION SELECT DROPDOWN */
+  select {
+    width: 100%;
+    padding: 10px;
+    /* We can either do margin-bottom or padding 
+       to create space below the dropdown. 
+       We'll do a bottom padding within the container 
+       or an extra element below. 
+       Let’s do a small bottom padding inside the container. */
+    border: 2px solid #666;
+    border-radius: 4px;
+    background-color: #444;
+    color: #fff;
+  }
+  
+  /* STATUS BOX */
+  .status {
+    /* Instead of margin-top: 15px, we can do padding above the content inside .status 
+       or add extra padding in .controls if you want space. */
+    padding: 15px;
+    background-color: #444;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.4;
+    /* If you want a gap above this box, add .status { padding-top: something } 
+       or add .controls { padding-bottom } if you'd rather keep them separate. */
+    margin-top: 0; /* no margin */
+  }
+  
