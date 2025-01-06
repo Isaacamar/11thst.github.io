@@ -269,13 +269,10 @@ nav {
   }
   
 
-.right-side {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: .5rem;
-}
+  .right-side {
+    margin-left: 340px; /* a bit more than 300px for safe spacing */
+  }
+  
 
 /* ------------------------
    Desktop Record Navigation
