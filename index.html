@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>11th Street Sounds</title>
+  <!-- Link to your external CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Header with giant spinning record underneath -->
+  <header>
+    <!-- The large, semi‐transparent spinning record background -->
+    <div class="header-record"></div>
+
+    <nav>
+      <!-- Logo & mini record -->
+      <div class="logo">
+        <div class="mini-record-container">
+          <img src="images/11logo.jpg" alt="Mini Logo" class="mini-spinning-record" />
+          <a href="index.html" class="home-link" aria-label="Home"></a>
+        </div>
+        <span class="logo-text">11<span class="subscript-th">th</span> Street Sounds</span>
+      </div>
+
+      <!-- (Optional) If you have nav links displayed horizontally, they'd go here -->
+      <!-- e.g., <ul><li><a href="about.html">About</a></li> ...</ul> -->
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-layout">
+    <!-- Left side with typewriter text -->
+    <div class="left-side">
+      <h1 class="typewriter"></h1>
+    </div>
+
+    <!-- Right side with the spinning records -->
+    <div class="right-side">
+      <div class="record-container">
+        <!-- Green record behind everything -->
+        <img src="images/green_record.png" alt="Green Record" class="spinning-record" />
+
+        <!-- Beige record with grooves & tinted overlay (centered or positioned as you like) -->
+        <img src="images/beige.png" alt="Beige Record" class="spinning-record-beige" />
+
+        <!-- Silogo record on top -->
+        <img src="images/11silogo2.png" alt="Silogo Record" class="spinning-record-silogo" />
+
+        <!-- Overlay for nav items (desktop wheel or mobile wheel) -->
+        <div class="nav-overlay" id="navOverlay"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer with optional giant record -->
+  <footer>
+    <div class="footer-record"></div>
+    <p>© 2025 11th Street Sounds. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Link to your external JS -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Mixes - 11th Street Sounds</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-mixes">
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="mini-record-container">
+                    <img src="images/11logo.jpg" alt="11th Street Mini Logo" class="mini-spinning-record" />
+                    <a href="index.html" class="home-link" aria-label="Home"></a>
+                </div>
+                <span class="logo-text">11th Street Sounds</span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="content mixes-content">
+        <h1>Latest Mixes</h1>
+        
+        <div class="mix-grid">
+            <div class="mix-item">
+                <div class="mix-record">
+                    <div class="record-overlay"></div>
+                </div>
+                <div class="mix-info">
+                    <h3>Deep House Sessions Vol. 1</h3>
+                    <p>Duration: 1:20:00</p>
+                    <div class="mix-controls">
+                        <button class="play-btn" data-mix="mix1">Play</button>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- More mix items -->
+        </div>
+
+        <div class="visualizer-container">
+            <canvas id="audioVisualizer"></canvas>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
