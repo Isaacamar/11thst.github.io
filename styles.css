@@ -1,45 +1,49 @@
 /* ------------------------
   Global Variables & Reset
-  ------------------------ */
-  :root {
+------------------------ */
+:root {
     --green-main: #193314;
     --green-accent: #2b4b24;
     --background-color: #1e1a0f;
     --text-color: #fff;
     --nav-hover-color: rgba(43, 75, 36, 1);
     --nav-normal-color: rgba(43, 75, 36, 0.8);
-}
-
-* {
+  }
+  
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-@import url('https://fonts.cdnjs.com/css2?family=Helvetica:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
-
-/* ------------------------
-   Typography
-   ------------------------ */
-.logo-text, .nav-item, .typewriter {
-    font-family: 'Helvetica', Arial, sans-serif;
-    font-weight: 900;
-}
-
-/* ------------------------
-   Base Styles & Background
-   ------------------------ */
-body {
+  }
+  
+  @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Helvetica:wght@700&display=swap');
+  
+  /* ------------------------
+     Base Typography
+  ------------------------ */
+  body {
     font-family: 'Special Elite', monospace;
     color: var(--text-color);
     line-height: 1.6;
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
-}
-
-body::before {
+    opacity: 1;
+    transition: opacity 0.5s ease; /* Fade transitions between pages */
+  }
+  
+  .logo-text,
+  .nav-item,
+  .typewriter {
+    font-family: 'Helvetica', Arial, sans-serif;
+    font-weight: 900;
+  }
+  
+  /* ------------------------
+     Body Overlay
+  ------------------------ */
+  body::before {
     content: '';
     position: fixed;
     top: 0;
@@ -48,10 +52,12 @@ body::before {
     height: 100%;
     background: rgba(30, 26, 15, 0.85);
     z-index: -1;
-}
-
-/* Background Cycler */
-.background-cycler {
+  }
+  
+  /* ------------------------
+     Background Cycler
+  ------------------------ */
+  .background-cycler {
     position: fixed;
     top: 0;
     left: 0;
@@ -59,9 +65,9 @@ body::before {
     height: 100%;
     z-index: -2;
     overflow: hidden;
-}
-
-.background-cycler img {
+  }
+  
+  .background-cycler img {
     position: absolute;
     top: 0;
     left: 0;
@@ -70,20 +76,21 @@ body::before {
     object-fit: cover;
     opacity: 0;
     transition: opacity 2s ease-in-out;
-}
-
-.background-cycler img.active {
+  }
+  
+  .background-cycler img.active {
     opacity: 1;
-}
-
-/* ------------------------
-   Header & Navigation Bar
-   ------------------------ */
-header, footer {
+  }
+  
+  /* ------------------------
+     Header & Footer
+  ------------------------ */
+  header,
+  footer {
     position: relative;
-}
-
-header {
+  }
+  
+  header {
     position: fixed;
     top: 0;
     left: 0;
@@ -94,9 +101,9 @@ header {
     align-items: center;
     background: transparent;
     overflow: hidden;
-}
-
-.header-record {
+  }
+  
+  .header-record {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -104,13 +111,13 @@ header {
     height: 2000px;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    background: url('images/green_record.png') no-repeat center/cover;
+    background: url('images/green_record.png') no-repeat center / cover;
     animation: spin 20s linear infinite;
     opacity: 0.2;
     z-index: -1;
-}
-
-header::after {
+  }
+  
+  header::after {
     content: "";
     position: absolute;
     left: 0;
@@ -119,14 +126,10 @@ header::after {
     height: 40px;
     pointer-events: none;
     z-index: 1;
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.3) 100%
-    );
-}
-
-nav {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 100%);
+  }
+  
+  nav {
     position: relative;
     z-index: 2;
     width: 100%;
@@ -134,119 +137,157 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-.logo {
+  }
+  
+  .logo {
     display: flex;
     align-items: center;
     gap: 1rem;
-}
-
-.logo-text {
+  }
+  
+  .logo-text {
     font-size: 1.4rem;
     font-weight: 1000;
     color: #fff;
     text-transform: uppercase;
     letter-spacing: 1px;
-}
-
-/* ------------------------
-   Typewriter Effect
-   ------------------------ */
-.typewriter {
+  }
+  
+  /* Footer */
+  footer {
+    position: relative;
+    margin-top: 2rem;
+    height: 150px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
-    border-right: .15em solid var(--text-color);
-    white-space: nowrap;
-    margin: 0;
-    animation: 
-        typing 3.5s steps(40, end),
-        blink-caret .75s step-end infinite;
-    max-width: fit-content;
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--text-color);
-}
-
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-}
-
-@keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: var(--text-color) }
-}
-
-/* ------------------------
-   Mini Record Navigation
-   ------------------------ */
-.mini-record-container {
+  }
+  
+  .footer-record {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: url('images/green_record.png') no-repeat center / cover;
+    animation: spin 30s linear infinite;
+    opacity: 0.2;
+    z-index: -1;
+  }
+  
+  footer::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 20px;
+    pointer-events: none;
+    z-index: 1;
+    background: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 100%);
+  }
+  
+  /* ------------------------
+     Mini Record (Header Logo)
+  ------------------------ */
+  .mini-record-container {
     position: relative;
     width: 40px;
     height: 40px;
-}
-
-.mini-spinning-record {
+  }
+  
+  .mini-spinning-record {
     width: 100%;
     height: 100%;
     border-radius: 50%;
     position: absolute;
     object-fit: cover;
     cursor: pointer;
-}
-
-.home-link {
+  }
+  
+  .home-link {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: 2;
-}
-
-/* ------------------------
-   Main Layout & Content
-   ------------------------ */
-.content {
+  }
+  
+  /* ------------------------
+     Main Layout & Content
+  ------------------------ */
+  .content {
     padding-top: 80px;
     max-width: 1200px;
     margin: 0 auto;
-}
-
-.main-layout {
+  }
+  
+  .main-layout {
     display: flex;
     justify-content: center;
     align-items: center;
     padding-top: 80px;
     width: 100%;
     min-height: 100vh;
-}
-
-.left-side {
+  }
+  
+  .left-side {
     flex: 0 0 auto;
     padding: 2rem;
-}
-
-.right-side {
+  }
+  
+  .right-side {
     flex: 1 1 auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: .1rem;
+    padding: 0.1rem;
     transition: margin-left 0.3s ease;
-}
-
-/* ------------------------
-   Desktop Record Navigation
-   ------------------------ */
-.record-container {
+  }
+  
+  /* ------------------------
+     Typewriter Effect
+  ------------------------ */
+  .typewriter {
+    overflow: hidden;
+    border-right: .15em solid var(--text-color);
+    white-space: nowrap;
+    margin: 0;
+    animation:
+      typing 3.5s steps(40, end),
+      blink-caret .75s step-end infinite;
+    max-width: fit-content;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--text-color);
+  }
+  
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  
+  @keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--text-color); }
+  }
+  
+  /* ------------------------
+     Desktop Record Navigation
+  ------------------------ */
+  .record-container {
     position: relative;
     width: 650px;
     height: 650px;
     margin: 0 auto;
-}
-
-.spinning-record {
+  }
+  
+  .spinning-record {
     position: absolute;
     top: 0;
     left: 0;
@@ -256,9 +297,9 @@ nav {
     border-radius: 50%;
     cursor: pointer;
     z-index: 1;
-}
-
-.spinning-record-beige {
+  }
+  
+  .spinning-record-beige {
     position: absolute;
     top: 29%;
     left: 30%;
@@ -268,9 +309,9 @@ nav {
     object-fit: cover;
     border-radius: 50%;
     z-index: 2;
-}
-
-.spinning-record-beige::before {
+  }
+  
+  .spinning-record-beige::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -279,14 +320,14 @@ nav {
     z-index: 3;
     background: rgba(0, 0, 0, 0.05);
     box-shadow:
-        0 0 0 4px rgba(0, 0, 0, 0.9),
-        0 0 0 10px rgba(0, 0, 0, 0.9),
-        0 0 0 16px rgba(0, 0, 0, 0.9),
-        0 0 0 22px rgba(0, 0, 0, 0.9),
-        0 0 0 28px rgba(0, 0, 0, 0.9);
-}
-
-.spinning-record-silogo {
+      0 0 0 4px rgba(0, 0, 0, 0.9),
+      0 0 0 10px rgba(0, 0, 0, 0.9),
+      0 0 0 16px rgba(0, 0, 0, 0.9),
+      0 0 0 22px rgba(0, 0, 0, 0.9),
+      0 0 0 28px rgba(0, 0, 0, 0.9);
+  }
+  
+  .spinning-record-silogo {
     position: absolute;
     top: 24%;
     left: 25%;
@@ -296,17 +337,17 @@ nav {
     object-fit: cover;
     border-radius: 50%;
     z-index: 4;
-}
-
-.nav-overlay {
+  }
+  
+  .nav-overlay {
     position: absolute;
     width: 100%;
     height: 100%;
     pointer-events: none;
     z-index: 9999;
-}
-
-.nav-item {
+  }
+  
+  .nav-item {
     position: absolute;
     transform-origin: center;
     cursor: pointer;
@@ -320,68 +361,41 @@ nav {
     white-space: nowrap;
     transition: transform 0.3s ease;
     z-index: 10000;
-}
-
-/* ------------------------
-   Footer
-   ------------------------ */
-footer {
-    position: relative;
-    margin-top: 2rem;
-    height: 150px;
-    background: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.footer-record {
+  }
+  
+  /* ------------------------
+     Animation Keyframes
+  ------------------------ */
+  @keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+  @keyframes counter-spin {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+  }
+  @keyframes reverse-spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(-360deg); }
+  }
+  
+  /* ------------------------
+     Mobile Navigation Wheel
+  ------------------------ */
+  .mobile-nav-wheel {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 600px;
-    height: 600px;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    background: url('images/green_record.png') no-repeat center/cover;
-    animation: spin 30s linear infinite;
-    opacity: 0.2;
-    z-index: -1;
-}
-
-footer::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    height: 20px;
-    pointer-events: none;
-    z-index: 1;
-    background: linear-gradient(
-        to top,
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.3) 100%
-    );
-}
-
-/* ------------------------
-   Mobile Navigation Wheel
-   ------------------------ */
-.mobile-nav-wheel {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     pointer-events: all;
-}
-
-.mobile-nav-item {
+    animation: spin 20s linear infinite;
+    transform: translate(-50%, -50%);
+  }
+  
+  .mobile-nav-item {
     position: absolute;
     transform-origin: center;
     width: 60px;
@@ -396,127 +410,343 @@ footer::before {
     font-size: 0.8rem;
     text-transform: uppercase;
     transition: all 0.3s ease;
-}
-
-.mobile-nav-item span {
-    transform: rotate(0deg);
+  }
+  
+  .mobile-nav-item span {
     white-space: nowrap;
-}
-
-.mobile-nav-item:active {
+    animation: counter-spin 20s linear infinite;
+  }
+  
+  .mobile-nav-item:active {
     transform: scale(0.95);
     background: var(--green-accent);
-}
-
-/* ------------------------
-   Animation Keyframes
-   ------------------------ */
-@keyframes spin {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-@keyframes counter-spin {
-    0% { transform: rotate(360deg); }
-    100% { transform: rotate(0deg); }
-}
-
-@keyframes reverse-spin {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(-360deg); }
-}
-
-/* ------------------------
-   Mobile Responsive Styles
-   ------------------------ */
-@media (max-width: 768px) {
-    /* Header Mobile */
+  }
+  
+  /* ------------------------
+     About Page
+  ------------------------ */
+  .about-content {
+    padding: 2rem;
+  }
+  
+  .timeline-section {
+    margin-bottom: 2rem;
+  }
+  
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .timeline-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 6px;
+  }
+  
+  .timeline-item h3 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .team-section {
+    margin-top: 2rem;
+  }
+  
+  .team-grid {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .team-member {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 6px;
+    flex: 1;
+    text-align: center;
+  }
+  
+  .member-photo {
+    width: 100%;
+    height: 200px;
+    background: #333;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+  
+  /* ------------------------
+     Contact Page
+  ------------------------ */
+  .contact-content {
+    padding: 2rem;
+  }
+  
+  .contact-container {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .contact-form,
+  .contact-info {
+    flex: 1 1 300px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 6px;
+  }
+  
+  .form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #fff;
+    padding: 0.5rem;
+    color: #fff;
+    outline: none;
+  }
+  
+  .form-group label {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform: translateY(-100%);
+    font-size: 0.9rem;
+    color: #ccc;
+    transition: 0.3s ease;
+  }
+  
+  .form-group input:focus + label,
+  .form-group textarea:focus + label {
+    color: #fff;
+  }
+  
+  .contact-form button {
+    background: var(--green-accent);
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+  }
+  
+  .contact-form button:hover {
+    background: var(--green-main);
+  }
+  
+  .info-item h3 {
+    margin-bottom: 0.5rem;
+  }
+  
+  /* ------------------------
+     Events Page
+  ------------------------ */
+  .events-content {
+    padding: 2rem;
+  }
+  
+  .events-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  
+  .event-item {
+    display: flex;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 6px;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .event-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 1rem;
+  }
+  
+  .event-date .month {
+    font-size: 1.2rem;
+  }
+  
+  .event-date .day {
+    font-size: 2rem;
+  }
+  
+  .rsvp-btn {
+    background: var(--green-accent);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+  
+  .calendar-container {
+    margin-top: 2rem;
+  }
+  
+  /* ------------------------
+     Mixes Page
+  ------------------------ */
+  .mixes-content {
+    padding: 2rem;
+  }
+  
+  .mix-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  
+  .mix-item {
+    display: flex;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 6px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .mix-record {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background: #333;
+    border-radius: 50%;
+  }
+  
+  .mix-info {
+    flex: 1;
+  }
+  
+  .mix-controls {
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .play-btn {
+    background: var(--green-accent);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+  
+  .play-btn:hover {
+    background: var(--green-main);
+  }
+  
+  .progress-bar {
+    position: relative;
+    width: 150px;
+    height: 8px;
+    background: #888;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .progress-bar .progress {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0%;
+    background: var(--green-accent);
+    transition: width 0.3s ease;
+  }
+  
+  .visualizer-container {
+    margin-top: 2rem;
+  }
+  
+  #audioVisualizer {
+    width: 100%;
+    max-width: 600px;
+    height: 200px;
+    background: #222;
+  }
+  
+  /* ------------------------
+     Mobile Responsiveness
+  ------------------------ */
+  @media (max-width: 768px) {
     header {
-        padding: 0.5rem 3%;
+      padding: 0.5rem 3%;
     }
-
+  
     .logo-text {
-        font-size: 1.1rem;
+      font-size: 1.1rem;
     }
-
+  
     .mini-record-container {
-        width: 30px;
-        height: 30px;
+      width: 30px;
+      height: 30px;
     }
-
-    /* Layout Mobile */
+  
     .main-layout {
-        flex-direction: column;
-        justify-content: center;
-        padding: 0;
-        height: 100vh;
+      flex-direction: column;
+      padding: 0;
+      height: 100vh;
     }
-
+  
     .left-side {
-        order: 2;
-        text-align: center;
-        padding: 1rem;
+      order: 2;
+      text-align: center;
+      padding: 1rem;
     }
-
+  
     .right-side {
-        order: 1;
-        width: 100%;
-        height: 60vh;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      order: 1;
+      width: 100%;
+      height: 60vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-
-    /* Record Mobile */
+  
     .record-container {
-        width: 80vmin;
-        height: 80vmin;
-        max-width: 90vw;
-        max-height: 90vw;
+      width: 80vmin;
+      height: 80vmin;
+      max-width: 90vw;
+      max-height: 90vw;
     }
-
-    /* Mobile Nav */
+  
     .mobile-nav-wheel {
-        animation: spin 20s linear infinite;
+      width: 70vmin;
+      height: 70vmin;
     }
-
-    .mobile-nav-item span {
-        animation: counter-spin 20s linear infinite;
-    }
-}
-
-@media (max-width: 360px) {
+  
     .mobile-nav-item {
-        width: 50px;
-        height: 50px;
-        font-size: 0.7rem;
+      width: 50px;
+      height: 50px;
+      font-size: 0.7rem;
     }
-
-    .record-container {
-        width: 85vmin;
-        height: 85vmin;
-    }
-}
-
-@media (max-width: 768px) and (orientation: landscape) {
-    .main-layout {
-        padding-top: 60px;
-    }
-
-    .right-side {
-        height: 80vh;
-    }
-
-    .record-container {
-        width: 60vh;
-        height: 60vh;
-    }
-
+  }
+  
+  @media (max-width: 360px) {
     .mobile-nav-item {
-        width: 45px;
-        height: 45px;
-        font-size: 0.7rem;
+      width: 45px;
+      height: 45px;
+      font-size: 0.7rem;
     }
-}
+  
+    .record-container {
+      width: 85vmin;
+      height: 85vmin;
+    }
+  }
+  
