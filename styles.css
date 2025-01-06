@@ -17,21 +17,21 @@
 }
 
 @import url('https://fonts.cdnjs.com/css2?family=Helvetica:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
 
+/* ------------------------
+   Typography
+   ------------------------ */
 .logo-text, .nav-item, .typewriter {
     font-family: 'Helvetica', Arial, sans-serif;
     font-weight: 900;
 }
 
-/* Removed .center-logo h1 reference since we removed that block */
-
+/* ------------------------
+   Base Styles & Background
+   ------------------------ */
 body {
     font-family: 'Special Elite', monospace;
-    background: url('images/11thstreet234.JPG') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
     color: var(--text-color);
     line-height: 1.6;
     min-height: 100vh;
@@ -50,131 +50,90 @@ body::before {
     z-index: -1;
 }
 
-/* ------------------------
-   Header & Navigation Bar
-   ------------------------ */
-   header, footer {
-    position: relative; /* needed for pseudo-elements */
-  }
-  
-  /* Header: pinned at top, transparent, large spinning record behind */
-  header {
+/* Background Cycler */
+.background-cycler {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 80px;  /* or however tall you want the header */
+    height: 100%;
+    z-index: -2;
+    overflow: hidden;
+}
+
+.background-cycler img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+.background-cycler img.active {
+    opacity: 1;
+}
+
+/* ------------------------
+   Header & Navigation Bar
+   ------------------------ */
+header, footer {
+    position: relative;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
     z-index: 999;
     display: flex;
     align-items: center;
     background: transparent;
-    overflow: hidden; /* hides giant record if it overflows header bounds */
-  }
-  
-  /* The huge spinning record behind the nav text */
-  .header-record {
+    overflow: hidden;
+}
+
+.header-record {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 2000px;   /* tweak to taste */
+    width: 2000px;
     height: 2000px;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    background: url('images/green_record.png') no-repeat center/cover; 
+    background: url('images/green_record.png') no-repeat center/cover;
     animation: spin 20s linear infinite;
-    opacity: 0.2;         /* see-through effect */
-    z-index: -1;          /* behind nav text */
-  }
-  
-  /* Subtle gradient fade at the bottom of the header */
-  header::after {
+    opacity: 0.2;
+    z-index: -1;
+}
+
+header::after {
     content: "";
     position: absolute;
-    left: 0; right: 0;
+    left: 0;
+    right: 0;
     bottom: 0;
-    height: 40px;          /* tweak how tall you want the fade */
+    height: 40px;
     pointer-events: none;
-    z-index: 1;            /* above the spinning record, below nav text */
-  
-    /* Fade from transparent at top to semi-trans at bottom */
+    z-index: 1;
     background: linear-gradient(
-      to bottom, 
-      rgba(0, 0, 0, 0) 0%, 
-      rgba(0, 0, 0, 0.3) 100%
+        to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.3) 100%
     );
-  }
-  
-  /* Your nav remains above the spinning record & gradient */
-  nav {
+}
+
+nav {
     position: relative;
-    z-index: 2; /* ensures nav is above .header-record and header::after */
+    z-index: 2;
     width: 100%;
     padding: 0 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-  
-  
-  /* ------------------------
-     Footer
-     ------------------------ */
-  footer {
-    position: relative; 
-    margin-top: 2rem;    /* space above footer */
-    height: 150px;       /* or whatever height you want */
-    background: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;    /* hides record edges if it’s large */
-  }
-  
-  /* The huge record in the footer (optional) */
-  .footer-record {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 600px;   /* tweak to taste */
-    height: 600px;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    background: url('images/green_record.png') no-repeat center/cover; 
-    animation: spin 30s linear infinite;
-    opacity: 0.2;  /* subtle see-through */
-    z-index: -1;   /* behind any footer text */
-  }
-  
-  /* Subtle gradient fade at the top of the footer */
-  footer::before {
-    content: "";
-    position: absolute;
-    left: 0; right: 0;
-    top: 0;
-    height: 20px;        /* tweak how tall you want the fade */
-    pointer-events: none;
-    z-index: 1;          /* above the spinning record, behind footer text */
-  
-    /* Fade from transparent at bottom to semi-trans at top */
-    background: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.3) 100%
-    );
-  }
-  
-  /* Spinning animation keyframes */
-  @keyframes spin {
-    0%   { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
-  }
-  
-  
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .logo {
@@ -191,9 +150,9 @@ nav {
     letter-spacing: 1px;
 }
 
-/* Removed entire .center-logo and .inner-record sections */
-
-/* Typewriter effect */
+/* ------------------------
+   Typewriter Effect
+   ------------------------ */
 .typewriter {
     overflow: hidden;
     border-right: .15em solid var(--text-color);
@@ -203,11 +162,10 @@ nav {
         typing 3.5s steps(40, end),
         blink-caret .75s step-end infinite;
     max-width: fit-content;
-    font-size: 2rem;  /* Make it big enough to stand out */
+    font-size: 2rem;
     font-weight: bold;
     color: var(--text-color);
 }
-
 
 @keyframes typing {
     from { width: 0 }
@@ -257,55 +215,50 @@ nav {
 
 .main-layout {
     display: flex;
-    justify-content: center; /* ADDED - horizontally center both sides */
-    align-items: center;     /* ADDED - vertically center within page */
+    justify-content: center;
+    align-items: center;
     padding-top: 80px;
     width: 100%;
     min-height: 100vh;
-  }
+}
 
-/* Left Side */
 .left-side {
-    flex: 0 0 auto; /* Allow the left side to grow naturally */
+    flex: 0 0 auto;
     padding: 2rem;
 }
 
-/* Right Side (where the record lives) */
 .right-side {
-    flex: 1 1 auto; /* Make the right side shrink as needed */
+    flex: 1 1 auto;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: .1rem;
-    transition: margin-left 0.3s ease; /* Smooth movement as text types */
+    transition: margin-left 0.3s ease;
 }
-  
 
 /* ------------------------
    Desktop Record Navigation
------------------------- */
+   ------------------------ */
 .record-container {
     position: relative;
     width: 650px;
     height: 650px;
     margin: 0 auto;
-  }
-  
-  /* Green record behind everything */
-  .spinning-record {
+}
+
+.spinning-record {
     position: absolute;
-    top: 0;      /* fills the container fully */
+    top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
     cursor: pointer;
-    z-index: 1;  /* behind everything else */
-  }
-  
-  /* Beige record with tinted grooves above green */
-  .spinning-record-beige {
+    z-index: 1;
+}
+
+.spinning-record-beige {
     position: absolute;
     top: 29%;
     left: 30%;
@@ -314,32 +267,26 @@ nav {
     height: 40%;
     object-fit: cover;
     border-radius: 50%;
-    z-index: 2;  /* in front of green */
-  }
-  
-  /* Grooves overlay on the beige record */
-  .spinning-record-beige::before {
+    z-index: 2;
+}
+
+.spinning-record-beige::before {
     content: "";
     position: absolute;
-    inset: 0;              /* fill entire circle */
+    inset: 0;
     border-radius: 50%;
     pointer-events: none;
-    z-index: 3;            /* above the beige image, below silogo */
-    
-    /* Subtle tinted overlay */
+    z-index: 3;
     background: rgba(0, 0, 0, 0.05);
-  
-    /* Thicker/darker concentric rings for visibility */
     box-shadow:
-      0 0 0 4px   rgba(0, 0, 0, 0.9),   
-      0 0 0 10px  rgba(0, 0, 0, 0.9),   
-      0 0 0 16px  rgba(0, 0, 0, 0.9),  
-      0 0 0 22px  rgba(0, 0, 0, 0.9),   
-      0 0 0 28px  rgba(0, 0, 0, 0.9);
-  }
-  
-  /* Silogo record on top of everything */
-  .spinning-record-silogo {
+        0 0 0 4px rgba(0, 0, 0, 0.9),
+        0 0 0 10px rgba(0, 0, 0, 0.9),
+        0 0 0 16px rgba(0, 0, 0, 0.9),
+        0 0 0 22px rgba(0, 0, 0, 0.9),
+        0 0 0 28px rgba(0, 0, 0, 0.9);
+}
+
+.spinning-record-silogo {
     position: absolute;
     top: 24%;
     left: 25%;
@@ -348,18 +295,18 @@ nav {
     height: 50%;
     object-fit: cover;
     border-radius: 50%;
-    z-index: 4;  /* highest layer */
-  }
-  
-  .nav-overlay {
+    z-index: 4;
+}
+
+.nav-overlay {
     position: absolute;
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 9999; /* ADDED - so nav text is above spinning records */
-  }
+    z-index: 9999;
+}
 
-  .nav-item {
+.nav-item {
     position: absolute;
     transform-origin: center;
     cursor: pointer;
@@ -372,8 +319,52 @@ nav {
     letter-spacing: 4px;
     white-space: nowrap;
     transition: transform 0.3s ease;
-    z-index: 10000; /* ADDED - definitely above everything else */
-  }
+    z-index: 10000;
+}
+
+/* ------------------------
+   Footer
+   ------------------------ */
+footer {
+    position: relative;
+    margin-top: 2rem;
+    height: 150px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.footer-record {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: url('images/green_record.png') no-repeat center/cover;
+    animation: spin 30s linear infinite;
+    opacity: 0.2;
+    z-index: -1;
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 20px;
+    pointer-events: none;
+    z-index: 1;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.3) 100%
+    );
+}
 
 /* ------------------------
    Mobile Navigation Wheel

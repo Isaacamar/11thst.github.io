@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+
     // ------------------------
     // Configuration
     // ------------------------
@@ -87,6 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
         type();
     }
 
+    
     // ------------------------
     // Mobile Navigation Setup
     // ------------------------
@@ -299,26 +300,45 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // ------------------------
-    // Initialization
-    // ------------------------
-    function init() {
-        handleResize();
-        setupMouseEvents();
-        setupTouchEvents();
-
-        const homeLink = document.querySelector('.home-link');
-        if (homeLink) {
-            homeLink.addEventListener('click', handleNavigation);
-        }
+    document.addEventListener('DOMContentLoaded', function() {
+        // Background Cycler Setup - moved to main initialization
+        function setupBackgroundCycler() {
+            const images = document.querySelectorAll('.background-cycler img');
+            let currentIndex = 0;
         
-        // Begin animations
-        requestAnimationFrame(animate);
-        window.addEventListener('resize', handleResize);
-
-        // Initialize the typewriter text
-        setupTypewriter();
-    }
-
-    init();
-});
+            function cycleBackground() {
+                images.forEach((img, index) => {
+                    img.classList.remove('active');
+                });
+                images[currentIndex].classList.add('active');
+                currentIndex = (currentIndex + 1) % images.length;
+            }
+        
+            // Set interval to cycle images every 5 seconds
+            setInterval(cycleBackground, 5000);
+        }
+    
+        // ------------------------
+        // Initialization
+        // ------------------------
+        function init() {
+            handleResize();
+            setupMouseEvents();
+            setupTouchEvents();
+            setupBackgroundCycler(); // Add this line to initialize the background cycler
+    
+            const homeLink = document.querySelector('.home-link');
+            if (homeLink) {
+                homeLink.addEventListener('click', handleNavigation);
+            }
+            
+            // Begin animations
+            requestAnimationFrame(animate);
+            window.addEventListener('resize', handleResize);
+    
+            // Initialize the typewriter text
+            setupTypewriter();
+        }
+    
+        init();
+    });
