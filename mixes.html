@@ -24,48 +24,50 @@
         </div>
         <span class="logo-text">11<span class="subscript-th">th</span> Street Sounds</span>
       </div>
+      <div class="nav-links">
+        <a href="index.html" class="home-button">Home</a>
+      </div>
     </nav>
   </header>
 
-  <main class="content mixes-content">
-    <h1>Latest Mixes</h1>
-    <div class="mix-grid">
-      <div class="mix-item">
-        <div class="mix-record">
-          <div class="record-overlay"></div>
+  <main class="main-layout">
+    <div class="mixes-content">
+      <h1>Latest Mixes</h1>
+      <div class="mix-grid">
+        <div class="mix-item">
+          <div class="mix-record">
+            <img src="images/11logo.jpg" alt="Mix Record" class="mix-spinning-record" />
+          </div>
+          <div class="mix-info">
+            <h3>Deep House Sessions Vol. 1</h3>
+            <p>Duration: 1:20:00</p>
+            <div class="mix-controls">
+              <button class="play-btn" data-mix="mix1">Play</button>
+              <div class="progress-bar">
+                <div class="progress"></div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="mix-info">
-          <h3>Deep House Sessions Vol. 1</h3>
-          <p>Duration: 1:20:00</p>
-          <div class="mix-controls">
-            <button class="play-btn" data-mix="mix1">Play</button>
-            <div class="progress-bar">
-              <div class="progress"></div>
+
+        <div class="mix-item">
+          <div class="mix-record">
+            <img src="images/11logo.jpg" alt="Mix Record" class="mix-spinning-record" />
+          </div>
+          <div class="mix-info">
+            <h3>Chill Vibes Vol. 2</h3>
+            <p>Duration: 1:05:00</p>
+            <div class="mix-controls">
+              <button class="play-btn" data-mix="mix2">Play</button>
+              <div class="progress-bar">
+                <div class="progress"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="mix-item">
-        <div class="mix-record">
-          <div class="record-overlay"></div>
-        </div>
-        <div class="mix-info">
-          <h3>Chill Vibes Vol. 2</h3>
-          <p>Duration: 1:05:00</p>
-          <div class="mix-controls">
-            <button class="play-btn" data-mix="mix2">Play</button>
-            <div class="progress-bar">
-              <div class="progress"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Add more mix items as needed -->
-    </div>
 
-    <div class="visualizer-container">
-      <canvas id="audioVisualizer"></canvas>
     </div>
   </main>
 

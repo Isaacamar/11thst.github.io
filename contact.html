@@ -24,40 +24,45 @@
         </div>
         <span class="logo-text">11<span class="subscript-th">th</span> Street Sounds</span>
       </div>
+      <div class="nav-links">
+        <a href="index.html" class="home-button">Home</a>
+      </div>
     </nav>
   </header>
 
-  <main class="content contact-content">
-    <h1>Get in Touch</h1>
-    <div class="contact-container">
-      <form id="contactForm" class="contact-form">
-        <div class="form-group">
-          <input type="text" id="name" required>
-          <label for="name">Name</label>
-        </div>
+  <main class="main-layout">  <!-- Changed this line to match index.html -->
+    <div class="contact-content">  <!-- Wrapped in a div instead of using main class -->
+      <h1>Get in Touch</h1>
+      <div class="contact-container">
+        <form id="contactForm" class="contact-form">
+          <div class="form-group">
+            <input type="text" id="name" required>
+            <label for="name">Name</label>
+          </div>
 
-        <div class="form-group">
-          <input type="email" id="email" required>
-          <label for="email">Email</label>
-        </div>
+          <div class="form-group">
+            <input type="email" id="email" required>
+            <label for="email">Email</label>
+          </div>
 
-        <div class="form-group">
-          <textarea id="message" required></textarea>
-          <label for="message">Message</label>
-        </div>
+          <div class="form-group">
+            <textarea id="message" required></textarea>
+            <label for="message">Message</label>
+          </div>
 
-        <button type="submit">Send Message</button>
-      </form>
+          <button type="submit">Send Message</button>
+        </form>
 
-      <div class="contact-info">
-        <div class="info-item">
-          <h3>Location</h3>
-          <p>11th St, East Village</p>
-        </div>
-        <div class="info-item">
-          <h3>Hours</h3>
-          <p>Mon-Fri: 10AM - 10PM</p>
-          <p>Sat-Sun: 12PM - Late</p>
+        <div class="contact-info">
+          <div class="info-item">
+            <h3>Location</h3>
+            <p>11th St, East Village</p>
+          </div>
+          <div class="info-item">
+            <h3>Hours</h3>
+            <p>Mon-Fri: 10AM - 10PM</p>
+            <p>Sat-Sun: 12PM - Late</p>
+          </div>
         </div>
       </div>
     </div>

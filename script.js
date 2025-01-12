@@ -66,16 +66,16 @@ const navItems = [
       if (!typewriterElement) return;
   
       if (currentCharIndex < texts[currentTextIndex].length) {
-        typewriterElement.textContent += texts[currentTextIndex].charAt(currentCharIndex);
-        currentCharIndex++;
-        setTimeout(type, typingSpeed);
+          // Add text without causing container shifts
+          typewriterElement.textContent = texts[currentTextIndex].substring(0, currentCharIndex + 1);
+          currentCharIndex++;
+          setTimeout(type, typingSpeed);
       } else {
-        // wait before deleting
-        setTimeout(() => {
-          deleteText();
-        }, 2000);
+          setTimeout(() => {
+              deleteText();
+          }, 2000);
       }
-    }
+  }
     
     function deleteText() {
       if (typewriterElement.textContent.length > 0) {
@@ -219,13 +219,18 @@ const navItems = [
   // -------------------------------------------------------------
   function handleNavigation(e) {
     e.preventDefault();
-    document.body.style.opacity = '0'; // fade out
-    document.body.style.transition = 'opacity 0.5s ease';
-  
+    const targetUrl = e.target.closest('a').href;
+    
+    // Immediately hide content while keeping background visible
+    document.querySelector('main').style.opacity = '0';
+    document.querySelector('header').style.opacity = '0';
+    document.querySelector('footer').style.opacity = '0';
+    
+    // Quick transition
     setTimeout(() => {
-      window.location.href = e.target.closest('a').href;
-    }, 500);
-  }
+        window.location.href = targetUrl;
+    }, 200); // Reduced timeout for snappier feel
+}
   
   function setupTouchEvents() {
     if (!recordContainer) return;

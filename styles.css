@@ -9,7 +9,9 @@
     --nav-hover-color: rgba(43, 75, 36, 1);
     --nav-normal-color: rgba(43, 75, 36, 0.8);
   }
-  
+  html, body {
+    background-color: var(--background-color); /* This matches your dark theme */
+}
   * {
     margin: 0;
     padding: 0;
@@ -29,9 +31,14 @@
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
-    opacity: 1;
-    transition: opacity 0.5s ease; /* Fade transitions between pages */
-  }
+    opacity: 0; /* Start with 0 opacity */
+    animation: fadeIn 0.5s ease-in forwards; /* Fade in smoothly */
+    background-color: var(--background-color);
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
   
   .logo-text,
   .nav-item,
@@ -79,15 +86,17 @@
   }
   
   .background-cycler img.active {
-    opacity: 1;
+    opacity: 1 !important; /* Forces background to stay visible during transitions */
   }
   
   /* ------------------------
      Header & Footer
   ------------------------ */
+  main,
   header,
   footer {
     position: relative;
+    transition: opacity 0.2s ease;
   }
   
   header {
@@ -221,11 +230,43 @@
   /* ------------------------
      Main Layout & Content
   ------------------------ */
+  .nav-links {
+    display: flex;
+    align-items: center;
+    margin-right: 2rem;
+}
+
+.home-button {
+    background-color: var(--green-accent);
+    color: white;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'Helvetica', Arial, sans-serif;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.home-button:hover {
+    background-color: var(--green-main);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .nav-links {
+        margin-right: 1rem;
+    }
+    
+    .home-button {
+        padding: 0.4rem 1rem;
+        font-size: 0.9rem;
+    }
+}
   .content {
-    padding-top: 80px;
+    padding-top: 120px; /* Increased from 80px to account for header height + spacing */
     max-width: 1200px;
     margin: 0 auto;
-  }
+}
   
   .main-layout {
     display: flex;
@@ -235,7 +276,7 @@
     width: 100%;
     min-height: 100vh;
   }
-  
+
   .left-side {
     flex: 0 0 auto;
     padding: 2rem;
@@ -256,16 +297,33 @@
   .typewriter {
     overflow: hidden;
     border-right: .15em solid var(--text-color);
-    white-space: nowrap;
+    /* Remove white-space: nowrap to prevent horizontal shifting */
     margin: 0;
     animation:
-      typing 3.5s steps(40, end),
-      blink-caret .75s step-end infinite;
-    max-width: fit-content;
+        typing 3.5s steps(40, end),
+        blink-caret .75s step-end infinite;
+    /* Change max-width to width and set a fixed value */
+    width: 600px;
     font-size: 2rem;
     font-weight: bold;
     color: var(--text-color);
-  }
+}
+
+/* Add word-wrap to handle text overflow */
+.typewriter {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+/* Update the left-side class to prevent shifting */
+.left-side {
+    flex: 0 0 600px; /* Fixed width instead of auto */
+    padding: 2rem;
+    /* Add overflow handling */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
   
   @keyframes typing {
     from { width: 0; }
@@ -425,8 +483,10 @@
   /* ------------------------
      About Page
   ------------------------ */
-  .about-content {
-    padding: 2rem;
+  .about-content,
+  .contact-content,
+  .mixes-content {
+      padding-top: 100px; /* Consistent top padding for all content pages */
   }
   
   .timeline-section {
@@ -547,137 +607,219 @@
   /* ------------------------
      Events Page
   ------------------------ */
-  .events-content {
-    padding: 2rem;
+  /* Events Page Layout */
+/* Events Page Layout */
+.events-container {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  height: calc(100vh - 230px);
+  width: 100%;
+}
+
+/* Keep your existing events panel styles */
+
+.events-panel {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  min-width: 300px;
+}
+
+.events-panel h2 {
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.events-scroll {
+  height: calc(100% - 50px);
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+/* Custom scrollbar */
+.events-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.events-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.events-scroll::-webkit-scrollbar-thumb {
+  background: var(--green-accent);
+  border-radius: 3px;
+}
+
+/* Event Items */
+.event-item {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.event-gallery {
+  margin-top: 1rem;
+}
+
+.event-gallery img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.event-location {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin: 0.3rem 0;
+}
+
+.event-time {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.event-price {
+  color: var(--green-accent);
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.event-note {
+  color: #999;
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+/* Past events specific */
+.event-item.past {
+  opacity: 0.8;
+}
+
+/* Subway sets specific */
+.event-item.subway {
+  border: 1px solid var(--green-accent);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .events-container {
+      flex-direction: column;
+      height: auto;
+      padding: 1rem;
   }
-  
-  .events-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
+
+  .events-panel {
+      min-width: 100%;
   }
-  
-  .event-item {
-    display: flex;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 1rem;
-    border-radius: 6px;
-    align-items: center;
-    gap: 1rem;
+
+  .events-scroll {
+      height: auto;
+      max-height: 500px;
   }
-  
-  .event-date {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-right: 1rem;
-  }
-  
-  .event-date .month {
-    font-size: 1.2rem;
-  }
-  
-  .event-date .day {
-    font-size: 2rem;
-  }
-  
-  .rsvp-btn {
-    background: var(--green-accent);
-    color: #fff;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-  }
-  
-  .calendar-container {
-    margin-top: 2rem;
-  }
+}
+
   
   /* ------------------------
-     Mixes Page
-  ------------------------ */
-  .mixes-content {
-    padding: 2rem;
-  }
+   Mixes Page
+------------------------ */
   
-  .mix-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
+.mixes-content {
+  padding: 2rem;
+}
+
+.mix-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.mix-item {
+  display: flex;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 6px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mix-record {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background: #333;
+  border-radius: 50%;
+  overflow: hidden; /* This ensures the spinning record stays within bounds */
+}
+
+.mix-spinning-record {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  animation: spin 20s linear infinite;
+}
+
+.mix-info {
+  flex: 1;
+}
+
+.mix-controls {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.play-btn {
+  background: var(--green-accent);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.play-btn:hover {
+  background: var(--green-main);
+}
+
+.progress-bar {
+  position: relative;
+  width: 150px;
+  height: 8px;
+  background: #888;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar .progress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0%;
+  background: var(--green-accent);
+  transition: width 0.3s ease;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
   }
-  
-  .mix-item {
-    display: flex;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 1rem;
-    border-radius: 6px;
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    align-items: center;
-    gap: 1rem;
+  to {
+    transform: rotate(360deg);
   }
-  
-  .mix-record {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    background: #333;
-    border-radius: 50%;
-  }
-  
-  .mix-info {
-    flex: 1;
-  }
-  
-  .mix-controls {
-    margin-top: 0.5rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .play-btn {
-    background: var(--green-accent);
-    color: #fff;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-  }
-  
-  .play-btn:hover {
-    background: var(--green-main);
-  }
-  
-  .progress-bar {
-    position: relative;
-    width: 150px;
-    height: 8px;
-    background: #888;
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  
-  .progress-bar .progress {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 0%;
-    background: var(--green-accent);
-    transition: width 0.3s ease;
-  }
-  
-  .visualizer-container {
-    margin-top: 2rem;
-  }
-  
-  #audioVisualizer {
-    width: 100%;
-    max-width: 600px;
-    height: 200px;
-    background: #222;
-  }
+}
   
   /* ------------------------
      Mobile Responsiveness
@@ -698,9 +840,11 @@
   
     .main-layout {
       flex-direction: column;
-      padding: 0;
-      height: 100vh;
-    }
+      padding-top: 100px; /* Increased padding to account for fixed header */
+      min-height: calc(100vh - 80px); /* Adjust for header height */
+      height: auto;
+  }
+
   
     .left-side {
       order: 2;
